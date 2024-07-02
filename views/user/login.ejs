@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/stayle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>logain</title>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <input type="submit" ></button>   
+        </form> 
+    </div>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent form submission
+
+    // Get input values
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    // Check if username and password are correct
+    if (username === "admin" && password === "nour") {
+        // Redirect to a page of your choice (e.g., login.html)   
+        window.location.href = "/";
+    } else {
+        // Display error message under the input fields
+        const errorMessage = document.createElement("p");
+        errorMessage.textContent = "Invalid username or password. Please try again.";
+        errorMessage.style.color = "red";
+        document.getElementById("loginForm").appendChild(errorMessage);
+         window.location.reload();
+    } 
+});
+    
+</script>
+    
+</body>
+</html>
