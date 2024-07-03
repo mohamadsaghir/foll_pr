@@ -43,12 +43,19 @@ app.get("/user/login.html", (req, res) => {
   res.render("user/login");
 });
 
+app.get("/user/invoice.html", (req, res) => {
+  res.render("user/invoice");
+});
+
 app.get("/user/not.html", (req, res) => {
   res.render("user/not");
 });
 
 app.get("/user/add.html", (req, res) => {
   res.render("user/add");
+});
+app.get("/user/today.html", (req, res) => {
+  res.render("user/today");
 });
 
 app.get("/edit/:id", (req, res) => {
@@ -62,10 +69,32 @@ app.get("/edit/:id", (req, res) => {
     });
 });
 
+app.get("/today/:id", (req, res) => {
+  User.findById(req.params.id)
+    .then((result) => {
+      res.render("user/today", { obj: result, moment: moment });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Internal Server Error");
+    });
+});
+
 app.get("/see/:id", (req, res) => {
   User.findById(req.params.id)
     .then((result) => {
       res.render("user/see", { obj: result });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Internal Server Error");
+    });
+});
+
+app.get("/invoice/:id", (req, res) => {
+  User.findById(req.params.id)
+    .then((result) => {
+      res.render("user/invoice", { obj: result });
     })
     .catch((err) => {
       console.error(err);

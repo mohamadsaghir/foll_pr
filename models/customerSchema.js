@@ -11,6 +11,7 @@ const userSchema = new Schema(
     State: String,
     Note: String,
     total: Number, // This will be calculated before saving
+    today: String,
   },
   { timestamps: true }
 );
